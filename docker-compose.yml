@@ -1,0 +1,80 @@
+version: '3'
+
+services:
+  chrome:
+    build:
+      context: .
+      dockerfile: Dockerfile.chrome
+    ports:
+      - "5900:5900"
+      - "6080:6080"
+    depends_on:
+      - base
+
+  blender:
+    build:
+      context: .
+      dockerfile: Dockerfile.blender
+    ports:
+      - "5901:5900"
+      - "6081:6080"
+    depends_on:
+      - base
+
+  audacity:
+    build:
+      context: .
+      dockerfile: Dockerfile.audacity
+    ports:
+      - "5902:5900"
+      - "6082:6080"
+    depends_on:
+      - base
+
+  brave:
+    build:
+      context: .
+      dockerfile: Dockerfile.brave
+    ports:
+      - "5903:5900"
+      - "6083:6080"
+    depends_on:
+      - base
+
+  discord:
+    build:
+      context: .
+      dockerfile: Dockerfile.discord
+    ports:
+      - "5904:5900"
+      - "6084:6080"
+    depends_on:
+      - base
+
+  firefox:
+    build:
+      context: .
+      dockerfile: Dockerfile.firefox
+    ports:
+      - "5905:5900"
+      - "6085:6080"
+    depends_on:
+      - base
+
+  vscode:
+    build:
+      context: .
+      dockerfile: Dockerfile.vscode
+    ports:
+      - "5906:5900"
+      - "6086:6080"
+    depends_on:
+      - base
+
+  base:
+    build:
+      context: .
+      dockerfile: base.Dockerfile
+    ports:
+      - "5900:5900"
+      - "6080:6080"

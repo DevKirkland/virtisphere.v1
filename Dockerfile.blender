@@ -1,0 +1,13 @@
+FROM base:latest
+
+# Install Blender
+RUN apt-get update && \
+    apt-get install -y blender
+
+# Add the background image
+COPY virtisphere_background.png /usr/share/backgrounds/virtisphere_background.png
+
+# Set desktop background
+RUN gsettings set org.gnome.desktop.background picture-uri file:///usr/share/backgrounds/virtisphere_background.png
+
+CMD ["sh", "-c", "Xvfb :99 -screen 0 1024x768x16 & fluxbox & x11vnc -display :99 -forever -shared -rfbport 5900 & websockify --web=/opt/noVNC 6080 localhost:5900 & blender"]
